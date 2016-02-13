@@ -1,17 +1,17 @@
 package riyafa;
 
-
-
+import com.ibm.mq.MQException;
 import com.ibm.mq.constants.CMQC;
 import com.ibm.mq.MQMessage;
 import com.ibm.mq.MQPutMessageOptions;
 import com.ibm.mq.MQQueue;
 import com.ibm.mq.MQQueueManager;
+import java.io.IOException;
 
 /**
  * This class is an example of JMS Client. Using sendMsg() method you can send a message to the IBM MQ
  *
- * To run this example you need com.ibm.mq.jar
+ * To run this example you need com.ibm.mq.jar and  com.ibm.mq.jmqi.jar
  *
  * @author Riyafa Abdul Hameed
  * @version 1.0
@@ -50,24 +50,23 @@ public class SimpleJMSProducer
             // Closing Queue after putting message
             queue.close();
 
-        } catch (Exception je)
+        } catch (MQException | NumberFormatException | IOException je)
         {
-            je.printStackTrace();
+            je.printStackTrace(System.err);
         } finally
         {
             if (queueManager != null) try
             {
                 // Disconnecting queue manager
                 queueManager.disconnect();
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+            } catch (MQException ex) {
+                ex.printStackTrace(System.err);
+            } 
         }
     }
 
     public static void main(String[] args)
     {
-        new SimpleJMSProducer().sendMsg("Hello World!!!");
+        new SimpleJMSProducer().sendMsg("Hello world!!!");
     }
 }
