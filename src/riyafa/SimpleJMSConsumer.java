@@ -1,7 +1,5 @@
 package riyafa;
 
-
-
 import com.ibm.mq.MQException;
 import com.ibm.mq.constants.CMQC;
 import com.ibm.mq.MQMessage;
@@ -10,13 +8,14 @@ import com.ibm.mq.MQQueueManager;
 import java.io.IOException;
 
 /**
- * This class is an example of JMS Client. Using sendMsg() method you can send a message to the IBM MQ
+ * This class is an example of JMS Client. Using receive() method you can receive a message to the IBM MQ if it exists
  *
- * To run this example you need com.ibm.mq.jar
+ * To run this example you need com.ibm.mq.jar and com.ibm.mq.jmqi.jar
  *
  * @author Riyafa Abdul Hameed
  * @version 1.0
  */
+
 public class SimpleJMSConsumer
 {
     public String receiveMsg()
@@ -48,7 +47,7 @@ public class SimpleJMSConsumer
 
         } catch (MQException | IOException je)
         {
-            System.err.println(je.getMessage());
+            je.printStackTrace(System.err);
         } finally
         {
             if (queueManager != null) try
@@ -57,7 +56,7 @@ public class SimpleJMSConsumer
                 queueManager.disconnect();
             } catch (Exception e)
             {
-                        System.err.println(e.getMessage());
+                e.printStackTrace(System.err);
             }
         }
         return "";
