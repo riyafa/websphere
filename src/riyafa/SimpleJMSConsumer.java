@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * To run this example you need com.ibm.mq.jar
  *
- * @author Kaushik.Jana
+ * @author Riyafa Abdul Hameed
  * @version 1.0
  */
 public class SimpleJMSConsumer
