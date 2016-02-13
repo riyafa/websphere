@@ -13,7 +13,7 @@ import com.ibm.mq.MQQueueManager;
  *
  * To run this example you need com.ibm.mq.jar
  *
- * @author Kaushik.Jana
+ * @author Riyafa Abdul Hameed
  * @version 1.0
  */
 public class SimpleJMSProducer
@@ -68,6 +68,6 @@ public class SimpleJMSProducer
 
     public static void main(String[] args)
     {
-        new SimpleJMSProducer().sendMsg("Hi Kausik ... How are you ?");
+        new SimpleJMSProducer().sendMsg("Hello World!!!");
     }
 }
